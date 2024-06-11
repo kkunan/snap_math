@@ -175,7 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
     String text = recognizedText.text;
     RegExp regex = RegExp(r'\b\d+(\.\d+)?\b');
     final parsedValues = regex
-        .allMatches(text)
+        .allMatches(text.replaceAll(',', ''))
         .map((regex) =>
             regex.group(0) != null ? double.parse(regex.group(0)!) : null)
         .whereNotNull();
