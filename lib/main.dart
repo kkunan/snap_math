@@ -52,6 +52,41 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            if (_selectedImage == null)
+              Column(
+                children: [
+                  Text(
+                    'Welcome to',
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    'Snap Math!',
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 48,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    'Try picking or taking a photo\nthat have numbers!',
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Colors.black54,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  )
+                ],
+              ),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -68,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 16,
                 ),
                 ElevatedButton(
@@ -98,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             if (_detectedNumbers != null)
               Text(
-                maxLines: 3,
+                  maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   'Found these numbers:\n${_detectedNumbers?.map((value) => value == value.round() ? value.round().toString() : value.toStringAsFixed(2)).join(", ")}'),
             const SizedBox(
